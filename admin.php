@@ -1,9 +1,36 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
+<?php
+include("include\dbconnect.php"); 
+extract($_POST);
+if(isset($btn))
+{
+$name=$_REQUEST['username'];
+ 
+$password=$_REQUEST['password'];
+ 
+  
+ if (($name=="admin")&&($password=="admin")) 
+  {
+  ?>
+<script language="javascript" type="text/javascript">
+alert("Login Successfully");
+window.location.href="admin_home.php";
+</script>
+<?php   
+ }
+ else
+{
+    
+?>
+<script language="javascript" type="text/javascript">
+alert("Username /  Password Incorrect");
+ 
+</script>
+<?php 
+}
+$conn->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +56,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
 	<!-- //css files -->
 	
-	<link href="css/css_slider.css" type="text/css" rel="stylesheet" media="all">
-
 	<!-- google fonts -->
     <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -50,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 			<input type="checkbox" id="drop" />
 			<ul class="menu mt-lg-3 ml-auto">
-				<li class="active"><a href="index.php">Home</a></li>
+					<li class="active"><a href="index.php">Home</a></li>
 			
 			
  				<li class=""><a href="view.php?report=Historical Landmarks">Historical</a></li>
@@ -67,78 +92,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //header -->
 
 <!-- banner -->
-<section class="banner_w3lspvt" id="home">
-	<div class="csslider infinity" id="slider1">
-		<input type="radio" name="slides" checked="checked" id="slides_1" />
-		<input type="radio" name="slides" id="slides_2" />
-		<input type="radio" name="slides" id="slides_3" />
-		<input type="radio" name="slides" id="slides_4" />
-		<ul>
-			<li>
-				<div class="banner-top">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-								<h3 class="text-wh">Tourism of Tamilnadu</span></h3>
-								 
-								 
-						  </div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="banner-top1">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-							<h3 class="text-wh">Tourism of Cuddalore</span></h3>
-						  </div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="banner-top2">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-								<h3 class="text-wh">Tourism of Cuddalore</span></h3>
-						  </div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="banner-top3">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-							 <h3 class="text-wh">Tourism of Cuddalore</span></h3>
-						  </div>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-		<div class="arrows">
-			<label for="slides_1"></label>
-			<label for="slides_2"></label>
-			<label for="slides_3"></label>
-			<label for="slides_4"></label>
+<div class="inner-banner" id="home">
+	<div class="inner-banner-overlay">
+		<div class="container">
+			
 		</div>
 	</div>
-</section>
+</div>
 <!-- //banner -->
 
-<!--/ab -->
- 
-    <!-- //ab -->
- <!-- stats --><!-- //stats -->
+<!-- page details -->
+<div class="breadcrumb-agile">
+	<div class="container">
+		<ol class="breadcrumb">
+			 
+		 
+		</ol>
+	</div>
+</div>
+<!-- //page details -->
+
+<!-- about --><!-- //about -->
+
+<!-- discount --><!-- //discount -->
+
+<!-- team -->
+<section class="team py-5" id="team">
+	<div class="container py-md-4">
+		<div class="title-desc text-center">
+			<h3 class="heading text-capitalize mb-md-5 mb-4">ADMIN LOGIN</h3>
+		</div>
+		 <form name="form1" method="post" action="">
+  <table height="127" align="center">
+    <tr>
+      <td>UserName</td>
+      <td><input type="text" name="username" placeholder="Username" required=""></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" name="password" placeholder="Password" required=""></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><span class="tp">
+        <input type="submit" name="btn" value="Login">
+      </span></td>
+    </tr>
+  </table>
+</form>
+	</div>
+</section>
+<!-- //team -->
 
 
- <!-- testimonials --><!-- //testimonials -->
-<!--we are ready --><!--we are ready-->
 
 <!-- newsletter --><!-- //newsletter-->
 
@@ -154,8 +160,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</p>
 </div>
 <!-- //copyright -->
-
-
 
 <!-- move top icon -->
 <a href="#home" class="move-top text-center"></a>
